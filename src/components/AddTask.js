@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import DisplayTasks from "./DisplayTasks";
+import { useState } from "react";
 
 const AddTask = () => {
   const [title, setTitle] = useState("");
@@ -22,19 +21,9 @@ const AddTask = () => {
     });
   };
 
-  const handLoad = () => {
-    console.log("reload");
-  };
-
-  const [todo, setTodo] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:8000/tasks")
-      .then((res) => res.json())
-      .then((data) => {
-        setTodo(data);
-        console.log(data);
-      });
-  }, []);
+  // const handleChange = () => {
+  //   setIsDone(!isdone);
+  // };
 
   return (
     <div className="create">
@@ -51,9 +40,15 @@ const AddTask = () => {
             value={body}
             onChange={(e) => setBody(e.target.value)}></textarea>
         </div>
-        <button onClick={() => handLoad()}>Add task</button>
+        <button>Add task</button>
       </form>
-      <DisplayTasks todo={todo} />
+
+      <input
+        type="checkbox"
+        checked={isdone}
+        onChange={() => setIsDone((prev) => !prev)}
+      />
+      <p>{isdone ? "checked" : "not checked"}</p>
     </div>
   );
 };
