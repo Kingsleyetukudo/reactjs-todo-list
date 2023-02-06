@@ -1,0 +1,56 @@
+{
+  "tasks": [
+    {
+      "title": "I want to code React",
+      "body": "After learning react i need to start writing my codes so as to get up with is",
+      "id": 1
+    },
+    {
+      "title": "I want to finish my nuxt project",
+      "body": "After learning nuxt i need to start writing my codes so as to get up with is",
+      "id": 2
+    },
+    {
+      "title": "read some code",
+      "body": "i want to read some code from my mentor to compare with the code am writing now.",
+      "isdone": false,
+      "id": 3
+    },
+    {
+      "title": "testing",
+      "body": "testing to know if it clears the input field",
+      "isdone": false,
+      "id": 4
+    },
+    {
+      "title": "",
+      "body": "",
+      "isdone": false,
+      "id": 5
+    },
+    {
+      "title": "",
+      "body": "",
+      "isdone": false,
+      "id": 6
+    },
+    {
+      "title": "tesrrr",
+      "body": "hjju jjkjk",
+      "isdone": false,
+      "id": 7
+    },
+    {
+      "title": "",
+      "body": "",
+      "isdone": false,
+      "id": 8
+    },
+    {
+      "title": "",
+      "body": "",
+      "isdone": false,
+      "id": 9
+    }
+  ]
+}
