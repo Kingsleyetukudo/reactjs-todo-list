@@ -21,9 +21,9 @@ const AddTask = () => {
     });
   };
 
-  // const handleChange = () => {
-  //   setIsDone(!isdone);
-  // };
+  const handleChange = () => {
+    setIsDone(!isdone);
+  };
 
   return (
     <div className="create">
@@ -44,11 +44,7 @@ const AddTask = () => {
         <button>Add task</button>
       </form>
 
-      <input
-        type="checkbox"
-        checked={isdone}
-        onChange={() => setIsDone((prev) => !prev)}
-      />
+      <input type="checkbox" checked={isdone} onChange={handleChange} />
       <p>{isdone ? "checked" : "not checked"}</p>
     </div>
   );

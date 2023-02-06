@@ -51,7 +51,9 @@
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 20px;
+  border: #f1356d solid 1px;
+  margin-top: 50px;
+  height: 400px;
 }
 
 .content-holder {
