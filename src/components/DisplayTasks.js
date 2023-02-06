@@ -2,72 +2,47 @@ import { useState, useEffect } from "react";
 
 const DisplayTasks = () => {
   const [todos, setTodo] = useState([]);
+  const [error, setError] = useState("");
+  const [sucessful, setSucessful] = useState("");
   useEffect(() => {
+    const controller = new AbortController();
+    const singel = controller.signal;
     fetch("http://localhost:8000/tasks")
       .then((res) => res.json())
       .then((data) => {
         setTodo(data);
+        setSucessful("Tasks load sucessfully");
         console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setError("data was not fetch...");
       });
+    return () => {
+      controller.abort();
+    };
   }, []);
 
-  const [list, setList] = useState([
-    {
-      id: 3,
-      title: "testing put ahaon ",
-      body: "hajks jjshs hdkihsd",
-      isdone: false,
-    },
-    {
-      id: 4,
-      title: "testing put ahaon ",
-      body: "hajks jjshs hdkihsd",
-      isdone: true,
-    },
-    {
-      title: "update is working",
-      body: "Check why the data is not click on first click",
-      isdone: false,
-      id: 5,
-    },
-    {
-      title: "trying for list",
-      body: "hahajjah working",
-      isdone: false,
-      id: 6,
-    },
-  ]);
+  const [task, setTask] = useState("kingsley");
 
-  const handleCheck = () => {
-    console.log(!todoTask.isdone, todoTask.id);
+  const handleCheck = (todo) => {
+    // console.log(!todoTask.isdone, todoTask.id);
     const updateed = {
-      id: todoTask.id,
-      title: todoTask.title,
-      body: todoTask.body,
-      isdone: !todoTask.isdone,
+      id: todo.id,
+      title: todo.title,
+      body: todo.body,
+      isdone: !todo.isdone,
     };
+
+    setTask(updateed);
 
     console.log(updateed);
 
-    fetch(`http://localhost:8000/tasks/${todoTask.id}`, {
+    fetch(`http://localhost:8000/tasks/${todo.id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updateed),
     });
-  };
-
-  const [todoTask, setTodoTask] = useState();
-  const handleChange = (todo) => {
-    setTodoTask(todo);
-    // {
-    //   ...todoTask,
-    //   id: todo.id,
-    //   title: todo.title,
-    //   body: todo.body,
-    //   isdone: true,
-    // }
-    todo ? "" : todo;
-    console.log(todoTask);
   };
 
   const testing = (item) => {
@@ -75,12 +50,15 @@ const DisplayTasks = () => {
   };
   return (
     <div className="display-tasks">
+      <p>{sucessful}</p>
+      <p>{error}</p>
       {todos.map((todo) => (
-        <div
-          key={todo.id}
-          className="content-holder"
-          onClick={() => handleChange(todo)}>
-          <input type="checkbox" checked={todo.isdone} onChange={handleCheck} />
+        <div key={todo.id} className="content-holder">
+          <input
+            type="checkbox"
+            checked={todo.isdone}
+            onChange={() => handleCheck(todo)}
+          />
           <div className="content">
             <h3>{todo.title}</h3>
             <p>{todo.body}</p>
@@ -88,11 +66,11 @@ const DisplayTasks = () => {
         </div>
       ))}
 
-      {list.map((item) => (
+      {/* {list.map((item) => (
         <p key={item.id} onClick={() => testing(item)}>
           {item.title}
         </p>
-      ))}
+      ))} */}
     </div>
   );
 };
