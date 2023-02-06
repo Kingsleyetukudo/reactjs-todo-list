@@ -11,39 +11,39 @@ const DisplayTasks = () => {
       });
   }, []);
 
-  const [todoTask, setTodoTask] = useState();
-  const handleChange = (todo) => {
-    setTodoTask(todo);
-    const isdone = {
-      id: todoTask.id,
-      title: todoTask.title,
-      body: todoTask.body,
-      isdone: todoTask.isdone,
-    };
-    console.log(isdone);
-    fetch(`http://localhost:8000/tasks/${todo.id}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(isdone),
-    });
-  };
+  // const handleCheck = (e) => {
+  //   setTodoTask(todoTask.isdone);
+  //   console.log(e.target.checked);
+  // };
+
+  // const [todoTask, setTodoTask] = useState();
+  // const handleChange = (todo) => {
+  //   setTodoTask(todo);
+  //   const isdone = {
+  //     id: todoTask.id,
+  //     title: todoTask.title,
+  //     body: todoTask.body,
+  //     isdone: (todoTask.isdone = true),
+  //   };
+  //   console.log(isdone);
+  //   fetch(`http://localhost:8000/tasks/${todo.id}`, {
+  //     method: "PUT",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(isdone),
+  //   });
+  // };
 
   return (
-    <div>
+    <div className="display-tasks">
       {todos.map((todo) => (
-        <div key={todo.id} onClick={() => handleChange(todo)}>
-          <h1>{todo.title}</h1>
-          <p>{todo.body}</p>
-          <input
-            type="checkbox"
-            checked={todo.isdone}
-            onChange={() => setTodoTask(!todo.isdone)}
-          />
+        <div key={todo.id} className="content-holder">
+          <input type="checkbox" checked={todo.isdone} />
+          <div className="content">
+            <h3>{todo.title}</h3>
+            <p>{todo.body}</p>
+          </div>
         </div>
       ))}
-
-      {/* <p>{todo.isdone ? "checked" : "not checked"}</p> */}
-      <h1>Hello kings </h1>
     </div>
   );
 };

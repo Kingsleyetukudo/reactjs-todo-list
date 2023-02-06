@@ -3,22 +3,26 @@
 /* base styles */
 * {
   margin: 0;
+  padding: 0;
   font-family: "Quicksand";
   color: #333;
 }
 
 /* create new blog form */
-.create {
+.create,
+.display-tasks {
   max-width: 400px;
-  margin: 100px auto;
+  margin: 0 auto;
   text-align: center;
+  margin-top: 100px;
 }
 .create label {
   text-align: left;
   display: block;
+  color: #f1356d;
 }
-.create h2 {
-  font-size: 20px;
+.create h1 {
+  font-size: 30px;
   color: #f1356d;
   margin-bottom: 30px;
 }
@@ -39,4 +43,36 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* content style */
+
+.display-tasks {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.content-holder {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  border: #f1356d solid 1px;
+  border-radius: 5px;
+  background-color: #ffe15d;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+}
+
+.content-holder p {
+  color: #b01e68;
+}
+
+.content-holder h3 {
+  color: #f1356d;
+}
+
+.content {
+  text-align: start;
 }

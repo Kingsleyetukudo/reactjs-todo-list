@@ -28,6 +28,7 @@ const AddTask = () => {
   return (
     <div className="create">
       <form onSubmit={handleSubmit}>
+        <h1>Todo List</h1>
         <div className="input">
           <label>Enter Task</label>
           <input
