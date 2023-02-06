@@ -14,27 +14,31 @@ const DisplayTasks = () => {
   const [todoTask, setTodoTask] = useState();
   const handleChange = (todo) => {
     setTodoTask(todo);
-    // const isdone = {
-    //   id: id,
-    //   title: todo.title,
-    //   body: todo.body,
-    //   isdone: todo.isdone,
-    // };
-    console.log(todoTask.isdone);
-    // fetch(`http://localhost:8000/tasks/${id}`, {
-    //   method: "PUT",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(isdone),
-    // });
+    const isdone = {
+      id: todoTask.id,
+      title: todoTask.title,
+      body: todoTask.body,
+      isdone: todoTask.isdone,
+    };
+    console.log(isdone);
+    fetch(`http://localhost:8000/tasks/${todo.id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(isdone),
+    });
   };
 
   return (
     <div>
       {todos.map((todo) => (
         <div key={todo.id} onClick={() => handleChange(todo)}>
-          <input type="checkbox" checked={todo.isdone} />
           <h1>{todo.title}</h1>
           <p>{todo.body}</p>
+          <input
+            type="checkbox"
+            checked={todo.isdone}
+            onChange={() => setTodoTask(!todo.isdone)}
+          />
         </div>
       ))}
 
