@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useFetch from "../composables/useFetch";
 
-const DisplayTasks = ({ todos }) => {
+const DisplayTasks = () => {
   // const [error, setError] = useState("");
   const [sucessful, setSucessful] = useState("");
   const [task, setTask] = useState();
@@ -31,15 +31,11 @@ const DisplayTasks = ({ todos }) => {
     });
   };
 
-  const testing = (item) => {
-    console.log(item);
-    setSucessful("");
-  };
   return (
     <div className="display-tasks">
       <p>{sucessful}</p>
       {/* <p>{error}</p> */}
-      {todos.map((todo) => (
+      {data.map((todo) => (
         <div
           key={todo.id}
           className={todo.isdone ? "task-complete" : "content-holder"}>

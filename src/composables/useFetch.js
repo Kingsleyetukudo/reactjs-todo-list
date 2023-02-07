@@ -5,9 +5,9 @@ const useFetch = (suc) => {
 
   useEffect(() => {
     const controller = new AbortController();
-    const singel = controller.signal;
+    // const singel = controller.signal;
     setTimeout(() => {
-      fetch("http://localhost:8000/tasks")
+      fetch("http://localhost:8000/tasks", { singel: controller.signal })
         .then((res) => res.json())
         .then((data) => {
           setData(data);

@@ -5,7 +5,7 @@ import DisplayTasks from "./DisplayTasks";
 const AddTask = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [isdone, setIsDone] = useState(false);
+  const [isdone] = useState(false);
   const [sucessful, setSucessful] = useState("");
   const { data } = useFetch(sucessful);
 
