@@ -8,6 +8,11 @@
   color: #333;
 }
 
+.App {
+  border: 1px solid #ffe15d;
+  max-height: 100vh;
+}
+
 /* create new blog form */
 .create,
 .display-tasks {
@@ -26,7 +31,7 @@
   color: #f1356d;
   margin-bottom: 30px;
 }
-.create input,
+.create input[type="text"],
 .create textarea,
 .create select {
   width: 100%;
@@ -49,11 +54,16 @@
 
 .display-tasks {
   max-width: 400px;
+  max-height: 350px;
+  overflow: auto;
   margin: 0 auto;
   text-align: center;
-  border: #f1356d solid 1px;
+  /* border: #f1356d solid 1px; */
   margin-top: 50px;
-  height: 400px;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 .content-holder {
@@ -66,9 +76,28 @@
   margin-bottom: 1rem;
   padding: 0.8rem;
 }
+.task-complete {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  border: #0d8549 solid 1px;
+  border-radius: 5px;
+  background-color: #166e30;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+}
 
 .content-holder p {
-  color: #b01e68;
+  color: #4b0829;
+}
+.task-complete p,
+h3 {
+  color: #fff;
+}
+
+.form-error {
+  border: 2px solid red;
 }
 
 .content-holder h3 {
@@ -77,4 +106,72 @@
 
 .content {
   text-align: start;
+}
+
+.sucess {
+  color: green;
+}
+
+.content-holder input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2em;
+  height: 2em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 0.15em solid #f1356d;
+  outline: none;
+  top: 10px;
+  cursor: pointer;
+}
+.task-complete input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2em;
+  height: 2em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 0.15em solid #fff;
+  outline: none;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* input.checked::before {
+  content: "\2714";
+  font-size: 1.5em;
+  color: #fff;
+  position: absolute;
+  right: 1px;
+  top: -4px;
+}
+.task-complete input.checked::before {
+  content: "\2714";
+  font-size: 1.5em;
+  color: #f1356d;
+  position: absolute;
+  right: 1px;
+  top: -4px;
+} */
+
+.checkbox-wrapper input[type="checkbox"]:focus {
+  box-shadow: 0 0 20px #f1356d;
+}
+
+input:checked {
+  background-color: #f1356d;
+  position: relative;
+}
+.task-complete input:checked {
+  background-color: #1c2d50;
+  position: relative;
+}
+
+input:checked::before {
+  content: "\2714";
+  font-size: 1.5em;
+  color: #fff;
+  position: absolute;
+  right: 4px;
+  top: -4px;
 }

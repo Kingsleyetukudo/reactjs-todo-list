@@ -1,11 +1,11 @@
 import AddTask from "./components/AddTask";
-import Displaytasks from "./components/DisplayTasks";
+// import Displaytasks from "./components/DisplayTasks";
 
 function App() {
   return (
     <div className="App">
       <AddTask />
-      <Displaytasks />
+      {/* <Displaytasks /> */}
     </div>
   );
 }
